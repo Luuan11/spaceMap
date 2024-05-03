@@ -9,6 +9,7 @@ const DivStyled = styled.div`
 const InputTextStyled = styled.input`
     height: 56px;
     padding: 12px 16px;
+    margin: 0 10px 0 0;
     border-radius: 10px;
     border: 2px solid;
     border-color: #C98CF1;
@@ -24,7 +25,7 @@ const InputTextStyled = styled.input`
 const InputIcon = styled.img`
     position: absolute;
     top: 10px;
-    right: 10px;
+    right: 20px;
     width: 38px;
     height: 38px;
 `
