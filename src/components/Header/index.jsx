@@ -9,7 +9,6 @@ const HeaderStyled = styled.header`
     img {
         max-width: 210px;
         margin: 0 0 0 10px;
-
     }
 `
 
