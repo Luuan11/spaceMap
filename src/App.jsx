@@ -1,12 +1,16 @@
 import { styled } from "styled-components"
-import GlobalStyles from "./components/Globalstyles"
-import Header from "./components/Header"
-import AsideBar from "./components/AsideBar"
-import Banner from "./components/Banner"
+import EstilosGlobais from "./componentes/EstilosGlobais"
+import Cabecalho from "./componentes/Cabecalho"
+import BarraLateral from "./componentes/BarraLateral"
+import Banner from "./componentes/Banner"
+import Galeria from "./componentes/Galeria"
+import ModalZoom from "./componentes/ModalZoom"
 
-import backgroundImage from "./assets/images/banner/banner.png"
+import fotos from './fotos.json'
+import bannerBackground from './assets/imagem/banner/banner.png'
+import { useState } from "react"
 
-const GradientBackround = styled.div`
+const FundoGradiente = styled.div`
   background: linear-gradient(174.61deg, #240433 4.16%, #27044f 48%, #4c1580 96.76%);
   width: 100%;
   min-height: 100vh;
@@ -20,32 +24,60 @@ const AppContainer = styled.div`
 
 const MainContainer = styled.main`
   display: flex;
-  gap: 35px;
+  gap: 24px;
 `
 
-const ContGallery = styled.section`
+const ConteudoGaleria = styled.section`
   display: flex;
-  flex: column;
+  flex-direction: column;
   flex-grow: 1;
 `
 
+const App = () => {
+  const [fotosDaGaleria, setFotosDaGaleria] = useState(fotos)
+  const [fotoSelecionada, setFotoSelecionada] = useState(null)
 
-function App() {
+  const aoAlternarFavorito = (foto) => {
+    if (foto.id === fotoSelecionada?.id) {
+      setFotoSelecionada({
+        ...fotoSelecionada,
+        favorita: !fotoSelecionada.favorita
+      })
+    }
+    setFotosDaGaleria(fotosDaGaleria.map(fotoDaGaleria => {
+      return {
+        ...fotoDaGaleria,
+        favorita: fotoDaGaleria.id === foto.id ? !foto.favorita : fotoDaGaleria.favorita
+      }
+    }))
+  }
   
   return (
-    <GradientBackround>
-      <GlobalStyles />
+    <FundoGradiente>
+      <EstilosGlobais />
       <AppContainer>
-        <Header />
+        <Cabecalho />
         <MainContainer>
-          <AsideBar />
-          <Banner 
-          text="Galeria mais completa de fotos do espaço"
-          backgroundImage={backgroundImage}
-          />
-          </MainContainer>
+          <BarraLateral />
+          <ConteudoGaleria>
+            <Banner
+              texto="A galeria mais completa de fotos do espaço!"
+              backgroundImage={bannerBackground}
+            />
+            <Galeria 
+              aoFotoSelecionada={foto => setFotoSelecionada(foto)} 
+              aoAlternarFavorito={aoAlternarFavorito}
+              fotos={fotosDaGaleria}
+            />
+          </ConteudoGaleria>
+        </MainContainer>
       </AppContainer>
-    </GradientBackround>
+      <ModalZoom 
+        foto={fotoSelecionada}
+        aoFechar={() => setFotoSelecionada(null)}
+        aoAlternarFavorito={aoAlternarFavorito}
+      />
+    </FundoGradiente>
   )
 }
 
