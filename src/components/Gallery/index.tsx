@@ -1,6 +1,28 @@
+import Title from "../Title";
+import Tags from "./Tags";
+import Famous from "./Famous"
+
+import { styled } from "styled-components"
+
+const GalleryContainer = styled.div`
+    display: flex;
+`
+
+const SectionFlow = styled.section`
+    flex-grow: 1;
+`
+
 const Gallery = () => {
     return (
-        <h2>Navegue pela galeria</h2>
+        <>
+            <Tags />
+            <GalleryContainer>
+                <SectionFlow>
+                    <Title> Navegue pela galeria </Title>
+                </SectionFlow>
+                <Famous />
+            </GalleryContainer>
+        </>
     )
 }
 
