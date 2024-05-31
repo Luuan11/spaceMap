@@ -16,16 +16,17 @@ const TagTitulo = styled.h3`
 
 const ButtonTag = styled.button`
     font-size: 20px;
-    color: #FFFFFF;
+    color: #fafafa;
     background: rgba(217, 217, 217, 0.3);
     border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all .5s;
     padding: 12px;
     box-sizing: border-box;
     border: 2px solid transparent;
     &:hover {
-      border-color: #C98CF1;
+      border-color: #fafafa;
+      background: #C98CF1;
     }
 `
 

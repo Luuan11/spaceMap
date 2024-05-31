@@ -7,6 +7,7 @@ const Figure = styled.figure`
     margin: 0;
     display: flex;
     flex-direction: column;
+    transition: all .3s;
     & > img {
         max-width: 100%;
         border-radius: 20px 20px 0 0;
@@ -24,6 +25,10 @@ const Figure = styled.figure`
             margin: 0;
             font-size: 16px;
         }
+    }
+
+    &:hover{
+        transform: scale(1.1);
     }
 `
 

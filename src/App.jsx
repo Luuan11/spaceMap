@@ -5,6 +5,7 @@ import BarraLateral from "./componentes/BarraLateral"
 import Banner from "./componentes/Banner"
 import Galeria from "./componentes/Galeria"
 import ModalZoom from "./componentes/ModalZoom"
+import Footer from "./componentes/Footer"
 
 import fotos from './fotos.json'
 import bannerBackground from './assets/imagem/banner/banner.png'
@@ -77,6 +78,7 @@ const App = () => {
         aoFechar={() => setFotoSelecionada(null)}
         aoAlternarFavorito={aoAlternarFavorito}
       />
+    <Footer />
     </FundoGradiente>
   )
 }
